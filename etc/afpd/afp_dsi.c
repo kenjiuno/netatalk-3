@@ -118,6 +118,7 @@ static void afp_dsi_close(AFPObj *obj)
 static void afp_dsi_die(int sig)
 {
     DSI *dsi = (DSI *)AFPobj->dsi;
+    LOG(log_note, logtype_afpd, "afp_dsi_die %d", sig);
 
     if (dsi->flags & DSI_RECONINPROG) {
         /* Primary reconnect succeeded, got SIGTERM from afpd parent */
