@@ -914,6 +914,7 @@ afp_read_exit:
     dsi_readdone(dsi);
    if (obj->options.flags & OPTION_AFP_READ_LOCK)
        ad_tmplock(ofork->of_ad, eid, ADLOCK_CLR, saveoff, savereqcount, ofork->of_refnum);
+    LOG(log_error, logtype_afpd, "going to exit %d", (errno));
     obj->exit(EXITERR_CLNT);
 
 afp_read_done:
