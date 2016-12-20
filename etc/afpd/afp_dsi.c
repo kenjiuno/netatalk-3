@@ -527,6 +527,7 @@ void afp_over_dsi(AFPObj *obj)
             }
 
             /* Some error on the client connection, enter disconnected state */
+            LOG(log_debug, logtype_afpd, "afp_over_dsi: here");
             if (dsi_disconnect(dsi) != 0)
                 afp_dsi_die(EXITERR_CLNT);
 
