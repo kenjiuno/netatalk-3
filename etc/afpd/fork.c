@@ -861,7 +861,8 @@ static int read_fork(AFPObj *obj, char *ibuf, size_t ibuflen _U_, char *rbuf, si
         if (dsi_stream_read_file(dsi, fd, offset, reqcount, err) < 0) {
             LOG(log_error, logtype_afpd, "afp_read(%s): ad_readfile: %s",
                 of_name(ofork), strerror(errno));
-            goto afp_read_exit;
+            err = ECONNRESET;
+            goto afp_read_done;
         }
         goto afp_read_done;
     }
